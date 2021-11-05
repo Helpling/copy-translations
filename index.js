@@ -26,7 +26,7 @@ function manipulateLocaleFile(file, map, output) {
   });
 }
 
-if (argv.help) {
+function showHelp() {
   console.log(
     "Eg. node index.js --map ./example/map.json --source ./example/source/ --output ./example/output/"
   );
@@ -38,19 +38,26 @@ if (argv.help) {
     "output: it's where we want to have the new translation keys files to be uploaded to the new project"
   );
   console.log("You can check the example folder in the project.");
+}
 
+if (argv.help) {
+  showHelp();
   return;
 }
+
 if (!argv.map) {
-  console.error("--map should be defined");
+  console.error("--map should be defined\n");
+  showHelp();
   return;
 }
 if (!argv.source) {
-  console.error("--source should be defined");
+  console.error("--source should be defined\n");
+  showHelp();
   return;
 }
 if (!argv.output) {
-  console.error("--output should be defined");
+  console.error("--output should be defined\n");
+  showHelp();
   return;
 }
 
