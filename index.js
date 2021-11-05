@@ -1,5 +1,6 @@
 const fs = require("fs");
 const argv = require("minimist")(process.argv.slice(2));
+const chalk = require("chalk");
 
 function manipulateLocaleFile(file, map, output) {
   fs.readFile(file, function (err1, fileData) {
@@ -28,16 +29,24 @@ function manipulateLocaleFile(file, map, output) {
 
 function showHelp() {
   console.log(
-    "Eg. node index.js --map ./example/map.json --source ./example/source/ --output ./example/output/"
+    chalk.yellow(
+      "Eg. node index.js --map ./example/map.json --source ./example/source/ --output ./example/output/"
+    ),
+    "\n"
   );
-  console.log("map: it's the file who map old keys with new ones");
   console.log(
-    "source: it's where the localization files exported from the original project are. They should be exported as simple json."
+    chalk.green("map: "),
+    "it's the file who map old keys with new ones"
   );
   console.log(
-    "output: it's where we want to have the new translation keys files to be uploaded to the new project"
+    chalk.green("source: "),
+    "it's where the localization files exported from the original project are. They should be exported as simple json."
   );
-  console.log("You can check the example folder in the project.");
+  console.log(
+    chalk.green("output: "),
+    "it's where we want to have the new translation keys files to be uploaded to the new project"
+  );
+  console.log("\nYou can check the example folder in the project.");
 }
 
 if (argv.help) {
@@ -46,17 +55,17 @@ if (argv.help) {
 }
 
 if (!argv.map) {
-  console.error("--map should be defined\n");
+  console.log(chalk.red("--map should be defined\n"));
   showHelp();
   return;
 }
 if (!argv.source) {
-  console.error("--source should be defined\n");
+  console.log(chalk.red("--source should be defined\n"));
   showHelp();
   return;
 }
 if (!argv.output) {
-  console.error("--output should be defined\n");
+  console.log(chalk.red("--output should be defined\n"));
   showHelp();
   return;
 }
