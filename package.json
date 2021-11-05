@@ -1,0 +1,11 @@
+{
+  "name": "copy_translations",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Massimiliano Zoffoli",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "minimist": "^1.2.5"
+  }
+}
